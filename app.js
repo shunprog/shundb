@@ -3,13 +3,20 @@ const express = require('express');
 const app = express();
 //load mysql (shundb)
 const mysql = require('mysql');
+//load env 
+require('dotenv').config()
 //connection mysql
 const connection = mysql.createConnection({
-    host: 'us-cdbr-east-05.cleardb.net',
-    user: 'b98b2809c9bb57',
-    password: '1ae6227f',
-    database: 'heroku_02b79c26b7117bd'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
+//Connection status to DB
+connection.connect(function(err) {   
+    if (err) throw err;
+    console.log("Connected!");
+  });
 //server start
 app.listen(3000, () => {
     console.log("Server running");
