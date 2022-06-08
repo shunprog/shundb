@@ -89,5 +89,3 @@ app.post('/update/:id', (req, res) => {
         });
 });
 
-process.env.HEROKUURL;
-
