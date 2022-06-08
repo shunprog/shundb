@@ -18,7 +18,7 @@ connection.connect(function(err) {
     console.log("Connected!");
   });
 //server start
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Server running");
 });
 
